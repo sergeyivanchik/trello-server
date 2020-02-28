@@ -1,7 +1,7 @@
-const Board = require('../models/board');;
+const Board = require('../models/board');
 
 
-async function boardList(req, res) {
+async function getBoards(req, res) {
   await Board.find()
     .then(boards => res.send(boards))
     .catch(error => {
@@ -24,6 +24,6 @@ async function addBoard(req, res) {
 };
 
 module.exports = {
-  boardList,
+  getBoards,
   addBoard
 };

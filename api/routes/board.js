@@ -3,7 +3,7 @@ const boardController = require('../controllers/board.js');
 
 
 router.route("/")
-  .get(boardController.boardList)
+  .get(boardController.getBoards)
   .post(boardController.addBoard)
 
 
