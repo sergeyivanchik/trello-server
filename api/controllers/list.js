@@ -23,7 +23,18 @@ async function addList(req, res) {
     });
 };
 
+async function getListsByBoard(req, res) {
+  await List.find({board: req.params.boardId})
+  .then(lists => res.send(lists))
+  .catch(error => {
+    res.status(500).send({
+      message: error.message
+    });
+  });
+}
+
 module.exports = {
   getLists,
-  addList
+  addList,
+  getListsByBoard
 };

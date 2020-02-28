@@ -6,5 +6,8 @@ router.route("/")
   .get(listController.getLists)
   .post(listController.addList)
 
+router.route("/:boardId")
+  .get(listController.getListsByBoard)
+
 
 module.exports = router;
