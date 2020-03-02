@@ -6,7 +6,7 @@ router.route("/")
   .get(taskController.getTasks)
   .post(taskController.addTask)
 
-router.route("/:boardId")
+router.route("/:listId")
   .get(taskController.getTasksByList)
 
 
