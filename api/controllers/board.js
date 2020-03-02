@@ -11,6 +11,17 @@ const Board = require('../models/board');
     });
 };
 
+const getBoardById = async (req, res) => {
+  await Board.findById(req.params.id)
+    .then(board => res.send(board))
+    .catch(error => {
+      res.status(500).send({
+        message: error.message
+      });
+      res.send(error);
+    });
+};
+
 const addBoard = async  (req, res) => {
   const newBoard = await new Board(req.body);
   newBoard.save()
@@ -25,5 +36,6 @@ const addBoard = async  (req, res) => {
 
 module.exports = {
   getBoards,
-  addBoard
+  addBoard,
+  getBoardById
 };
