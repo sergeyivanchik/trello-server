@@ -1,7 +1,7 @@
 const Board = require('../models/board');
 
 
-async function getBoards(req, res) {
+ const getBoards = async (req, res) => {
   await Board.find()
     .then(boards => res.send(boards))
     .catch(error => {
@@ -11,7 +11,18 @@ async function getBoards(req, res) {
     });
 };
 
-async function addBoard(req, res) {
+const getBoardById = async (req, res) => {
+  await Board.findById(req.params.id)
+    .then(board => res.send(board))
+    .catch(error => {
+      res.status(500).send({
+        message: error.message
+      });
+      res.send(error);
+    });
+};
+
+const addBoard = async  (req, res) => {
   const newBoard = await new Board(req.body);
   newBoard.save()
     .then(board => res.send(board))
@@ -25,5 +36,6 @@ async function addBoard(req, res) {
 
 module.exports = {
   getBoards,
-  addBoard
+  addBoard,
+  getBoardById
 };

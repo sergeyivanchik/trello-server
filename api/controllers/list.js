@@ -1,7 +1,7 @@
 const List = require('../models/list');
 
 
-async function getLists(req, res) {
+const getLists = async (req, res) => {
   await List.find()
     .then(lists => res.send(lists))
     .catch(error => {
@@ -11,7 +11,7 @@ async function getLists(req, res) {
     });
 };
 
-async function addList(req, res) {
+const addList = async (req, res) => {
   const newList = await new List(req.body);
   newList.save()
     .then(list => res.send(list))
@@ -23,7 +23,7 @@ async function addList(req, res) {
     });
 };
 
-async function getListsByBoard(req, res) {
+const getListsByBoard = async (req, res) => {
   await List.find({board: req.params.boardId})
   .then(lists => res.send(lists))
   .catch(error => {

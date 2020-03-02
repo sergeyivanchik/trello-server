@@ -4,7 +4,8 @@ const { Schema } = mongoose;
 
 const taskSchema = new Schema({
   title: String,
-  list: {type: Schema.ObjectId, ref: "List", required: true},
+  complete: Boolean,
+  list: {type: Schema.ObjectId, ref: "List"},
 },
 {
   versionKey: false
