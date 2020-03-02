@@ -9,5 +9,8 @@ router.route("/")
 router.route("/:listId")
   .get(taskController.getTasksByList)
 
+router.route("/:id")
+  .put(taskController.changeTaskComplete)
+
 
 module.exports = router;

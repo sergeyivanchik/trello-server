@@ -31,10 +31,22 @@ const getTasksByList = async (req, res) => {
       message: error.message
     });
   });
-}
+};
+
+const changeTaskComplete = async (req, res) => {
+  await Task.findByIdAndUpdate(req.params.id, req.body)
+    .then(task => res.send(task))
+    .catch(error => {
+      res.status(500).send({
+        message: error.message
+      });
+      res.send(error);
+    });
+};
 
 module.exports = {
   getTasks,
   addTask,
-  getTasksByList
+  getTasksByList,
+  changeTaskComplete
 };
