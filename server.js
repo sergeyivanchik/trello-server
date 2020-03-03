@@ -7,10 +7,11 @@ const jsonParser = express.json();
 const cors = require('cors');
 const toJson = require('@meanie/mongoose-to-json'); 
 const port = require('./config.js').port;
+const dbConnectionString = require('./config.js').dbConnectionString;
 
 
 mongoose.plugin(toJson);
-mongoose.connect('mongodb+srv://267696:cthutq9874123@cluster0-r2jfp.azure.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect(dbConnectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
