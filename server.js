@@ -5,27 +5,21 @@ const bodyParser = require('body-parser');
 const server = require('http').createServer(app);
 const jsonParser = express.json();
 const cors = require('cors');
-const toJson = require('@meanie/mongoose-to-json'); 
+const toJson = require('@meanie/mongoose-to-json');
+const passport = require('passport');
 const port = require('./config.js').port;
-const dbConnectionString = require('./config.js').dbConnectionString;
 
 
 mongoose.plugin(toJson);
-mongoose.connect(dbConnectionString, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-  .then(async() => console.log('Connection to DB established successfully'))
-  .catch((error) => {
-    console.log('Connection to DB failed', error);
-  });
+
+require('./api/utils/dataBase.js').setUpConnection();
+require('./api/passport/jwt.js');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 app.use(cors());
 app.use(jsonParser);
-
 app.use('/',require('./api/routes/index'));
+app.use(passport.initialize());
 
 server.listen(port, () => console.log('port', port));
