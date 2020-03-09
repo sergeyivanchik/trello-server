@@ -4,14 +4,14 @@ const passport = require('passport');
 
 
 router.route("/")
-  .get(passport.authenticate('jwt', { session: false }), taskController.getTasks)
-  .post(passport.authenticate('jwt', { session: false }), taskController.addTask)
+  .get(taskController.getTasks)
+  .post(taskController.addTask)
 
 router.route("/:listId")
-  .get(passport.authenticate('jwt', { session: false }), taskController.getTasksByList)
+  .get(taskController.getTasksByList)
 
 router.route("/:id")
-  .put(passport.authenticate('jwt', { session: false }), taskController.changeTaskComplete)
+  .put(taskController.changeTaskComplete)
 
 
 module.exports = router;

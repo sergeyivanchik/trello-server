@@ -4,11 +4,11 @@ const passport = require('passport');
 
 
 router.route("/")
-  .get(passport.authenticate('jwt', { session: false }), listController.getLists)
-  .post(passport.authenticate('jwt', { session: false }), listController.addList)
+  .get(listController.getLists)
+  .post(listController.addList)
 
 router.route("/:boardId")
-  .get(passport.authenticate('jwt', { session: false }), listController.getListsByBoard)
+  .get(listController.getListsByBoard)
 
 
 module.exports = router;
