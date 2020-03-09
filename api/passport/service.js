@@ -15,7 +15,7 @@ createToken = userId => {
     userId,
     expiresIn: '1d'
   }, config.secretKey);
-    return 'bearer '+ token;
+    return 'bearer ' + token;
 };
 
 module.exports = {
