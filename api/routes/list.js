@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const listController = require('../controllers/list');
+const passport = require('passport');
 
 
 router.route("/")
