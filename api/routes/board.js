@@ -10,4 +10,7 @@ router.route("/")
 router.route("/:id")
   .get(boardController.getBoardById)
 
+router.route("/user/:userId")
+  .get(boardController.getBoardsByUser)
+
 module.exports = router;

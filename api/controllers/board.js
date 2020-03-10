@@ -11,6 +11,16 @@ const Board = require('../models/board');
     });
 };
 
+const getBoardsByUser = async (req, res) => {
+  await Board.find({ user: req.params.userId})
+    .then(boards => res.send(boards))
+    .catch(error => {
+      res.status(500).send({
+        message: error.message
+      });
+    });
+};
+
 const getBoardById = async (req, res) => {
   await Board.findById(req.params.id)
     .then(board => res.send(board))
@@ -37,5 +47,6 @@ const addBoard = async  (req, res) => {
 module.exports = {
   getBoards,
   addBoard,
-  getBoardById
+  getBoardById,
+  getBoardsByUser
 };

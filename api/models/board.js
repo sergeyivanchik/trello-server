@@ -3,7 +3,8 @@ const { Schema } = mongoose;
 
 
 const boardSchema = new Schema({
-  title: String
+  title: String,
+  user: {type: Schema.ObjectId, ref: "User"},
 }, 
 {
   versionKey: false
