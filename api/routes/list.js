@@ -10,5 +10,8 @@ router.route("/")
 router.route("/:boardId")
   .get(listController.getListsByBoard)
 
+router.route("/:id")
+  .delete(listController.deleteList)
+
 
 module.exports = router;
