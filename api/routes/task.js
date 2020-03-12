@@ -12,6 +12,7 @@ router.route("/:listId")
 
 router.route("/:id")
   .put(taskController.changeTaskComplete)
+  .delete(taskController.deleteTask)
 
 
 module.exports = router;
