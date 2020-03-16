@@ -9,6 +9,7 @@ router.route("/")
 
 router.route("/:id")
   .get(boardController.getBoardById)
+  .delete(boardController.deleteBoard)
 
 router.route("/user/:userId")
   .get(boardController.getBoardsByUser)
